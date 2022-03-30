@@ -4,7 +4,7 @@ Not me.
 Especially when I only use them once every 6 months or so.
 
 I created this sketch to help me re-learn how pointers
-  and their syntax works, espeically pertaining to strings.
+  and their syntax works, especially pertaining to strings.
 
 I hope it helps you too!
 
@@ -44,7 +44,7 @@ void setup() {
   Serial.println(aString);
   Serial.print("&aString[0]: \t\t");
   Serial.println(&aString[0]);
-  Serial.print("stringPointer: \t");
+  Serial.print("stringPointer: \t\t");
   Serial.println(stringPointer);
   Serial.print("&stringPointer[0]: \t");
   Serial.println(&stringPointer[0]);
@@ -58,7 +58,7 @@ void setup() {
   Serial.println((uint16_t) &aString[0]);
   Serial.print("(uint16_t) stringPointer: \t");
   Serial.println((uint16_t) stringPointer);
-  Serial.print("(uint16_t) aString: \t");
+  Serial.print("(uint16_t) aString: \t\t");
   Serial.println((uint16_t) aString);
   Serial.println();
   Serial.println("Trying to print &stringPointer returns an error: it's the address of an address, or a pointer to a pointer");
@@ -69,23 +69,23 @@ void setup() {
   char* anotherString = "I am another String!";
 
   Serial.println("Here is the string we are passing into the function:");
-  Serial.print("anotherString: \t");
+  Serial.print("anotherString: \t\t");
   Serial.println(anotherString);
   incStringPP(&anotherString);
   Serial.println();
   Serial.println("===== I'm back in main! =====");
-  Serial.print("anotherString: \t");
+  Serial.print("anotherString: \t\t");
   Serial.println(anotherString);
   Serial.println("Notice anotherString remains incremented");
   Serial.println();
   Serial.println("Now we reset anotherString to its original form:");
   anotherString -= 2;
-  Serial.print("anotherString: \t");
+  Serial.print("anotherString: \t\t");
   Serial.println(anotherString);
   incStringP(anotherString);
   Serial.println();
   Serial.println("===== I'm back in main! =====");
-  Serial.print("anotherString: \t");
+  Serial.print("anotherString: \t\t");
   Serial.println(anotherString);
   Serial.println("Notice anotherString is not incremented");
 }
@@ -105,13 +105,20 @@ void incStringPP (char** inputString) {
   // If you try Serial.println(inputString); you'll get a compiler error because you can't print a pointer to a pointer
   Serial.println();
   Serial.println("===== I'm in incStringPP now! =====");
-  Serial.print("*inputString: \t");
+  Serial.print("*inputString: \t\t");
   Serial.println(*inputString);
-  Serial.print("**inputString: \t");
+  Serial.print("**inputString: \t\t");
   Serial.println(**inputString);
+  Serial.print("*inputString[0]: \t");
+  Serial.println(*inputString[0]);
+  Serial.print("*inputString + 2: \t");
+  Serial.println(*inputString + 2);
+  Serial.print("*(*inputString + 2): \t");
+  Serial.println(*(*inputString + 2));
+
   *inputString += 2;
   Serial.println("After *inputString += 2; ...");
-  Serial.print("*inputString: \t");
+  Serial.print("*inputString: \t\t");
   Serial.println(*inputString);
 }
 
@@ -124,7 +131,7 @@ void incStringP (char* inputString) {
   Serial.println("===== I'm in incStringP now! =====");
   Serial.print("inputString: \t\t");
   Serial.println(inputString);
-  Serial.print("*inputString: \t");
+  Serial.print("*inputString: \t\t");
   Serial.println(*inputString);
   inputString += 2;
   Serial.println("After inputString += 2; ...");
